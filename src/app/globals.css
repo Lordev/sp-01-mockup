@@ -9,6 +9,10 @@
 	--color-secondary: #8f8f8e;
 }
 
+body {
+	overflow: hidden;
+}
+
 @layer utilities {
 	.text-balance {
 		text-wrap: balance;
