@@ -20,15 +20,9 @@ const config = {
 	exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
 };
 
-const buttonVariants = [
-	'from-red-500 to-zinc-500',
-	'from-yellow-500 to-zinc-500',
-	'from-green-500 to-zinc-500',
-	'from-blue-500 to-zinc-500',
-];
-
 function Customizer() {
-	const { setIntroScreen, introScreen } = useStore();
+	const { setIntroScreen, changeColor, colors } = useStore();
+
 	return (
 		<>
 			<Button
@@ -46,9 +40,19 @@ function Customizer() {
 					<p className="text-zinc-400">Slick model lineback</p>
 				</div>
 				<div className="flex gap-2">
-					{buttonVariants.map((variant, index) => (
+					{colors.map((variant, index) => (
 						<div
-							className={`h-12 w-12 ${variant} bg-gradient-to-tr rounded-full from-50% to-50%`}
+							key={index}
+							onClick={() =>
+								changeColor({
+									main: variant.main,
+									accent: variant.accent,
+								})
+							}
+							className={`h-12 w-12 from-[color:_${variant}]  to-zinc-700 bg-gradient-to-tr rounded-full from-50% to-50% pointer-events-auto cursor-pointer`}
+							style={{
+								backgroundImage: `linear-gradient(135deg, ${variant.accent} 50%, ${variant.main} 50%)`,
+							}}
 						/>
 					))}
 				</div>
@@ -74,17 +78,13 @@ export default function Overlay() {
 						{...config}
 						className="absolute min-h-screen w-full top-0"
 					>
-						<ShoppingCart className="text-white absolute right-5 top-5" />
-
-						{/* <motion.div className="max-w-[1350px] w-full absolute flex justify-between top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 px-4">
-						<h2 className="text-white text-[32rem] font-antonio">
-							SP
-						</h2>
-						<h2 className="text-white text-[32rem] font-antonio">
-							_01
-						</h2>
-					</motion.div> */}
-						{/* <TextHeader /> */}
+						<ShoppingCart className="text-white absolute right-5 top-5 cursor-pointer pointer-events-auto" />
+						<div className="absolute right-5 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
+							<p className="text-zinc-300 [writing-mode:vertical-lr] ">
+								sp_ 700 201 prototype
+							</p>
+							<span className="w-[1px] h-10 bg-white" />
+						</div>
 
 						<div className="max-w-[1755px] w-full absolute left-1/2 -translate-x-1/2 flex justify-between items-center bottom-8 px-4">
 							<div>
@@ -104,7 +104,7 @@ export default function Overlay() {
 											key={index}
 										>
 											<Link
-												className="text-white mr-4"
+												className="text-white mr-4 pointer-events-auto hover:text-zinc-200"
 												href="/shop"
 											>
 												Github

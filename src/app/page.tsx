@@ -5,7 +5,7 @@ import Overlay from '@/components/Overlay';
 
 export default function Home() {
 	return (
-		<main className="min-h-screen bg-gradient-background w-full relative">
+		<main className="min-h-screen w-full relative">
 			<Logo className="text-white absolute left-5 top-5" />
 			<Scene />
 			<Overlay />

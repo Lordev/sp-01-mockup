@@ -17,6 +17,10 @@ body {
 	.text-balance {
 		text-wrap: balance;
 	}
+
+	p {
+		@apply font-antonio;
+	}
 }
 
 .scene-react-three {
