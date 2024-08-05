@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useEffect } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, Html } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useStore } from '@/lib/store';
 import { easing } from 'maath';
@@ -99,26 +99,26 @@ export default function HeadPhonesMockup() {
 			if (introScreen) {
 				easing.damp3(
 					headphoneRef.current.position,
-					[0.8, -1.4, -0.2],
+					[0, -2.4, -2],
 					0.4,
 					delta
 				);
 				easing.dampE(
 					headphoneRef.current.rotation,
-					[Math.PI / 2, -Math.PI / 2, 0],
+					[-Math.PI / 1.5, 0, Math.PI / 4],
 					0.4,
 					delta
 				);
 			} else {
 				easing.damp3(
 					headphoneRef.current.position,
-					[0, -2.4, -0.2],
+					[0, -2.4, -2],
 					0.4,
 					delta
 				);
 				easing.dampE(
 					headphoneRef.current.rotation,
-					[Math.PI / 2, Math.PI / 1, 0],
+					[-Math.PI / 2, 0, -Math.PI * 5],
 					0.4,
 					delta
 				);
@@ -184,12 +184,15 @@ export default function HeadPhonesMockup() {
 				rotation={[0, -0.2, 0]}
 				position={[-1.82, -0.0, 0.3]}
 				scale={0.99}
+				castShadow
 			/>
+
 			<mesh
 				geometry={circle2?.geometry}
 				material={circle2Material.current}
 				rotation={[0, -0.2, 0]}
 				position={[-1.9, 0, 2]}
+				castShadow
 			/>
 			<mesh
 				geometry={earCup?.geometry}
@@ -197,16 +200,19 @@ export default function HeadPhonesMockup() {
 				rotation={[0, -0.2, 0]}
 				position={[-1.79, -0.02, 0.32]}
 				scale={[1.03, 1.03, 1.03]}
+				castShadow
 			/>
 			<mesh
 				geometry={cube?.geometry}
 				material={cubeMaterial.current}
 				position={[0.06, 0, 0.3]}
+				castShadow
 			/>
 			<mesh
 				geometry={cube3?.geometry}
 				material={cube3Material.current}
 				position={[0.06, 0, 0.35]}
+				castShadow
 			/>
 		</group>
 	) : null;

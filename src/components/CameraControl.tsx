@@ -12,7 +12,8 @@ export default function CameraControl({
 	const group = useRef<Group | null>(null);
 
 	useFrame((state, delta) => {
-		easing.damp3(state.camera.position, [0, 0, 14], 0.8, delta);
+		easing.damp3(state.camera.position, [0, 3, 12], 0.8, delta);
+		easing.dampE(state.camera.rotation, [-Math.PI / 15, 0, 0], 0.8, delta);
 		group.current
 			? easing.dampE(
 					group.current.rotation,

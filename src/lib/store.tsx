@@ -9,23 +9,25 @@ type Colors = Color[];
 
 type State = {
 	introScreen: boolean;
-	setIntroScreen: (introScreen: boolean) => void;
+	infoWindow: boolean;
 	prevColor: Color;
 	currentColor: Color;
 	colors: Colors;
+	setIntroScreen: (introScreen: boolean) => void;
+	toggleInfoWindow: () => void;
 	changeColor: (color: Color) => void;
 };
 
 export const useStore = create<State>(set => ({
 	introScreen: true,
-	setIntroScreen: introScreen => set({ introScreen }),
+	infoWindow: false,
 	prevColor: {
-		main: '#575467',
-		accent: '#737373',
+		main: '#A2319B',
+		accent: '#DAB8B8',
 	},
 	currentColor: {
-		main: '#575467',
-		accent: '#737373',
+		main: '#A2319B',
+		accent: '#DAB8B8',
 	},
 	colors: [
 		{
@@ -45,6 +47,11 @@ export const useStore = create<State>(set => ({
 			accent: '#196E8D',
 		},
 	],
+	setIntroScreen: introScreen => set({ introScreen }),
+	toggleInfoWindow: () =>
+		set(state => ({
+			infoWindow: !state.infoWindow,
+		})),
 	changeColor: color =>
 		set(state => ({
 			prevColor: { ...state.currentColor },
