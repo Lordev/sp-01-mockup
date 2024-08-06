@@ -1,21 +1,24 @@
 import { useStore } from '@/lib/store';
+import CloseIcon from './svg/CloseIcon';
 
 export default function InfoWindow() {
-	const { infoWindow } = useStore();
+	const { closeInfoWindow, infoWindow } = useStore();
 
 	return (
 		<div
-			className="absolute right-0 top-1/2  w-80 bg-black/60 p-4 overflow-y-auto text-white pointer-events-auto"
+			className="absolute right-0 bottom-0 top-0 w-full md:w-80 bg-black/60 p-4 overflow-y-auto text-white pointer-events-auto z-20"
 			style={{
 				backdropFilter: 'blur(10px)',
-				transform: infoWindow
-					? 'translateX(0%) translateY(-50%)'
-					: 'translateX(100%) translateY(-50%)',
+				transform: infoWindow ? 'translateX(0%) ' : 'translateX(100%) ',
 				opacity: infoWindow ? 1 : 0,
 				transition:
 					'transform 0.5s ease-in-out , opacity 0.5s ease-in-out',
 			}}
 		>
+			<CloseIcon
+				className="w-8 cursor-pointer"
+				onClick={closeInfoWindow}
+			/>
 			<h1 className="text-xl font-bold mb-4 text-center">
 				Discover the SP 01
 			</h1>

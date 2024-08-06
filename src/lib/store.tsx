@@ -14,7 +14,8 @@ type State = {
 	currentColor: Color;
 	colors: Colors;
 	setIntroScreen: (introScreen: boolean) => void;
-	toggleInfoWindow: () => void;
+	openInfoWindow: () => void;
+	closeInfoWindow: () => void;
 	changeColor: (color: Color) => void;
 };
 
@@ -48,10 +49,8 @@ export const useStore = create<State>(set => ({
 		},
 	],
 	setIntroScreen: introScreen => set({ introScreen }),
-	toggleInfoWindow: () =>
-		set(state => ({
-			infoWindow: !state.infoWindow,
-		})),
+	openInfoWindow: () => set({ infoWindow: true }),
+	closeInfoWindow: () => set({ infoWindow: false }),
 	changeColor: color =>
 		set(state => ({
 			prevColor: { ...state.currentColor },

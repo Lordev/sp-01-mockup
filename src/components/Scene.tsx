@@ -4,17 +4,12 @@ import HeadPhonesMockup from './HeadphonesMockup';
 import CameraControl from './CameraControl';
 import {
 	Center,
-	Plane,
-	Text,
-	CameraControls,
 	useHelper,
 	Environment,
-	Box,
 	ContactShadows,
 } from '@react-three/drei';
-import { DirectionalLight, PointLight } from 'three';
+import { DirectionalLight, PointLight, DirectionalLightHelper } from 'three';
 import { useMemo, useRef } from 'react';
-import Floor from './Floor';
 import { useStore } from '@/lib/store';
 
 export default function Scene() {
@@ -37,15 +32,12 @@ export default function Scene() {
 				blur={1}
 				far={10}
 			/>
-
-			{/* <BoxModel position={[0, -2.5, 0]} /> */}
-			{/* <Floor rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.5, 0]} /> */}
 			<CameraControl>
 				<Center position={[0, 1.5, 0]}>
 					<HeadPhonesMockup />
 				</Center>
 			</CameraControl>
-			<Text
+			{/* <Text
 				fontSize={2.5}
 				letterSpacing={-0.05}
 				rotation={[0, 0, 0]}
@@ -54,7 +46,7 @@ export default function Scene() {
 			>
 				SP{'     '}_01
 				<meshStandardMaterial color="#fff" />
-			</Text>
+			</Text> */}
 			{/* <CameraControls /> */}
 			<Environment preset="city" />
 		</Canvas>
@@ -90,24 +82,22 @@ const Lights = () => {
 	return (
 		<>
 			<pointLight
-				visible={!introScreen}
-				position={[3.5, -1.2, -4]}
-				intensity={8}
+				position={[1.5, -1, -1]}
+				intensity={1}
 				color={'#ff0000'}
 				castShadow
 				ref={pointLightRef}
 			/>
 			<pointLight
-				visible={!introScreen}
-				position={[-3.5, -1.2, -4]}
-				color={'#0000ff'}
-				intensity={8}
+				position={[-1.5, -1, -1]}
+				color={'#ff0000'}
+				intensity={1}
 				castShadow
 				ref={pointLightRef2}
 			/>
 			<directionalLight
-				position={[0, 5, 0]}
-				intensity={5}
+				position={[0, 5, 4]}
+				intensity={4}
 				lookAt={HeadPhonesMockup}
 				castShadow
 				ref={directionalLightRef}
