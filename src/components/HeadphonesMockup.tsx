@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useGLTF, Html } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useStore } from '@/lib/store';
@@ -8,6 +8,22 @@ import { Group, Mesh, MeshStandardMaterial, Color } from 'three';
 
 export default function HeadPhonesMockup() {
 	const { introScreen, prevColor, currentColor } = useStore();
+	const [viewport, setViewport] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight,
+	});
+
+	useEffect(() => {
+		function handleResize() {
+			setViewport({
+				width: window.innerWidth,
+				height: window.innerHeight,
+			});
+		}
+
+		window.addEventListener('resize', handleResize);
+		return () => window.removeEventListener('resize', handleResize);
+	}, []);
 
 	const headphoneRef = useRef<Group>(null);
 
@@ -94,32 +110,34 @@ export default function HeadPhonesMockup() {
 		}
 	}, [prevColor]);
 
+	const modelScale = Math.min(viewport.width / 800, 1);
+
 	useFrame((state, delta) => {
 		if (headphoneRef.current) {
 			if (introScreen) {
 				easing.damp3(
 					headphoneRef.current.position,
-					[0, -2.4, -2],
-					0.4,
+					[0, -2.4, 3],
+					0.7,
 					delta
 				);
 				easing.dampE(
 					headphoneRef.current.rotation,
 					[-Math.PI / 1.5, 0, Math.PI / 4],
-					0.4,
+					0.7,
 					delta
 				);
 			} else {
 				easing.damp3(
 					headphoneRef.current.position,
-					[0, -2.4, -2],
-					0.4,
+					[0, -2.4, 3],
+					0.7,
 					delta
 				);
 				easing.dampE(
 					headphoneRef.current.rotation,
 					[-Math.PI / 2, 0, -Math.PI * 5],
-					0.4,
+					0.7,
 					delta
 				);
 			}
@@ -177,43 +195,56 @@ export default function HeadPhonesMockup() {
 	});
 
 	return nodes ? (
-		<group ref={headphoneRef} scale={0.8} position={[0, 0, 0]}>
-			<mesh
-				geometry={circle?.geometry}
-				material={circleMaterial.current}
-				rotation={[0, -0.2, 0]}
-				position={[-1.82, -0.0, 0.3]}
-				scale={0.99}
-				castShadow
-			/>
+		<group ref={headphoneRef} scale={modelScale}>
+			{circleMaterial.current && (
+				<mesh
+					geometry={circle?.geometry}
+					material={circleMaterial.current}
+					rotation={[0, -0.2, 0]}
+					position={[-1.82, -0.0, 0.3]}
+					scale={0.99}
+					castShadow
+				/>
+			)}
 
-			<mesh
-				geometry={circle2?.geometry}
-				material={circle2Material.current}
-				rotation={[0, -0.2, 0]}
-				position={[-1.9, 0, 2]}
-				castShadow
-			/>
-			<mesh
-				geometry={earCup?.geometry}
-				material={earCupMaterial.current}
-				rotation={[0, -0.2, 0]}
-				position={[-1.79, -0.02, 0.32]}
-				scale={[1.03, 1.03, 1.03]}
-				castShadow
-			/>
-			<mesh
-				geometry={cube?.geometry}
-				material={cubeMaterial.current}
-				position={[0.06, 0, 0.3]}
-				castShadow
-			/>
-			<mesh
-				geometry={cube3?.geometry}
-				material={cube3Material.current}
-				position={[0.06, 0, 0.35]}
-				castShadow
-			/>
+			{circle2Material.current && (
+				<mesh
+					geometry={circle2?.geometry}
+					material={circle2Material.current}
+					rotation={[0, -0.2, 0]}
+					position={[-1.9, 0, 2]}
+					castShadow
+				/>
+			)}
+
+			{earCupMaterial.current && (
+				<mesh
+					geometry={earCup?.geometry}
+					material={earCupMaterial.current}
+					rotation={[0, -0.2, 0]}
+					position={[-1.79, -0.02, 0.32]}
+					scale={[1.03, 1.03, 1.03]}
+					castShadow
+				/>
+			)}
+
+			{cubeMaterial.current && (
+				<mesh
+					geometry={cube?.geometry}
+					material={cubeMaterial.current}
+					position={[0.06, 0, 0.3]}
+					castShadow
+				/>
+			)}
+
+			{cube3Material.current && (
+				<mesh
+					geometry={cube3?.geometry}
+					material={cube3Material.current}
+					position={[0.06, 0, 0.35]}
+					castShadow
+				/>
+			)}
 		</group>
 	) : null;
 }

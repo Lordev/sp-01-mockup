@@ -25,7 +25,7 @@ export default function Scene() {
 			<Lights />
 			<ContactShadows
 				rotation-x={Math.PI / 2}
-				position={[0, -2.45, 0]}
+				position={[0, -4.45, 0]}
 				resolution={512}
 				width={10}
 				height={10}
@@ -33,7 +33,7 @@ export default function Scene() {
 				far={10}
 			/>
 			<CameraControl>
-				<Center position={[0, 1.5, 0]}>
+				<Center>
 					<HeadPhonesMockup />
 				</Center>
 			</CameraControl>
@@ -54,7 +54,6 @@ export default function Scene() {
 }
 
 const Lights = () => {
-	const { introScreen } = useStore();
 	const pointLightRef = useRef<PointLight>(null);
 	const pointLightRef2 = useRef<PointLight>(null);
 	const directionalLightRef = useRef<DirectionalLight>(null);
@@ -82,14 +81,14 @@ const Lights = () => {
 	return (
 		<>
 			<pointLight
-				position={[1.5, -1, -1]}
+				position={[1.5, -3.5, -1]}
 				intensity={1}
 				color={'#ff0000'}
 				castShadow
 				ref={pointLightRef}
 			/>
 			<pointLight
-				position={[-1.5, -1, -1]}
+				position={[-1.5, -3.5, -1]}
 				color={'#ff0000'}
 				intensity={1}
 				castShadow

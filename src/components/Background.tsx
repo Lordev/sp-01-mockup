@@ -10,12 +10,12 @@ export default function Background({
 }) {
 	const { currentColor } = useStore();
 	const [background, setBackground] = useState(
-		`linear-gradient(120deg, ${currentColor.main} 50%, ${currentColor.accent} 50%)`
+		`linear-gradient(120deg, ${currentColor.accent} 50%, ${currentColor.main} 50%)`
 	);
 
 	useEffect(() => {
 		setBackground(
-			`linear-gradient(120deg, ${currentColor.main} 50%, ${currentColor.accent} 50%)`
+			`linear-gradient(120deg, ${currentColor.accent} 50%, ${currentColor.main} 50%)`
 		);
 	}, [currentColor]);
 
@@ -23,7 +23,7 @@ export default function Background({
 		<motion.div
 			className="w-full h-full min-h-screen"
 			style={{
-				background: `linear-gradient(120deg, ${currentColor.main} 50%, ${currentColor.accent} 50%)`,
+				background: `linear-gradient(120deg, ${currentColor.accent} 50%, ${currentColor.main} 50%)`,
 				transition: 'background 2.5s ease-in-out',
 			}}
 			animate={{ background }}

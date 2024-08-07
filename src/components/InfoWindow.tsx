@@ -6,7 +6,7 @@ export default function InfoWindow() {
 
 	return (
 		<div
-			className="absolute right-0 bottom-0 top-0 w-full md:w-80 bg-black/60 p-4 overflow-y-auto text-white pointer-events-auto z-20"
+			className="absolute right-0 bottom-0 top-0 w-full md:w-80 bg-black/60 px-4 overflow-y-auto text-white z-20 pointer-events-auto text-center"
 			style={{
 				backdropFilter: 'blur(10px)',
 				transform: infoWindow ? 'translateX(0%) ' : 'translateX(100%) ',
@@ -16,42 +16,59 @@ export default function InfoWindow() {
 			}}
 		>
 			<CloseIcon
-				className="w-8 cursor-pointer"
+				className="w-8 mt-8 cursor-pointer pointer-events-auto"
 				onClick={closeInfoWindow}
 			/>
-			<h1 className="text-xl font-bold mb-4 text-center">
-				Discover the SP 01
-			</h1>
-			<p className="text-base mb-4 text-center">
-				Where innovation meets elegance in headphone design.
-			</p>
-			<h2 className="text-lg font-semibold mb-2">
-				Exceptional Sound Quality
-			</h2>
-			<p className="text-base mb-4">
-				Experience rich, clear audio with deep bass and crisp highs. The
-				SP 01 is engineered to deliver a superior listening experience,
-				whether you’re at home or on the go.
-			</p>
-			<h2 className="text-lg font-semibold mb-2">Customizable Design</h2>
-			<p className="text-base mb-4">
-				Tailor the SP 01 to fit your unique style. Our interactive 3D
-				model allows you to choose from a range of colors, materials,
-				and finishes. Visualize your customization in real-time as you
-				rotate and zoom the model to see every detail up close.
-			</p>
-			<h2 className="text-lg font-semibold mb-2">Premium Comfort</h2>
-			<p className="text-base mb-4">
-				Designed for extended wear, the SP 01 features plush ear
-				cushions and an adjustable headband. The ergonomic design
-				ensures a comfortable fit for long listening sessions.
-			</p>
-			<h2 className="text-lg font-semibold mb-2">Durable Build</h2>
-			<p className="text-base mb-4">
-				Crafted with high-quality materials, the SP 01 is built to last.
-				Its sleek, modern design is not only visually appealing but also
-				robust and resilient.
-			</p>
+			<div className="mt-16">
+				<h1 className="text-xl font-bold mb-4 text-center">
+					Discover the SP 01
+				</h1>
+				<p className="text-base mb-4 ">
+					Discover the pinnacle of audio excellence with the SP 01.
+				</p>
+				<h2 className="text-lg font-semibold mb-2">
+					Exceptional Sound Quality
+				</h2>
+				<p className="text-base mb-4">
+					Immerse yourself in crystal-clear audio with deep bass and
+					sharp highs. The SP 01 is engineered to deliver an unrivaled
+					listening experience, perfect for any setting.
+				</p>
+				<h2 className="text-lg font-semibold mb-2">
+					Unmatched Comfort
+				</h2>
+				<p className="text-base mb-4">
+					Experience all-day comfort with plush ear cushions and an
+					adjustable headband. The SP 01{"'"}s ergonomic design
+					ensures a perfect fit, even during extended listening
+					sessions.
+				</p>
+				<h2 className="text-lg font-semibold mb-2">
+					Robust and Stylish
+				</h2>
+				<p className="text-base mb-4">
+					Crafted from premium materials, the SP 01 combines
+					durability with a sleek, modern look. Built to withstand the
+					rigors of daily use while maintaining its elegant
+					appearance.
+				</p>
+				<h2 className="text-lg font-semibold mb-2">
+					Advanced Technology
+				</h2>
+				<p className="text-base mb-4">
+					Equipped with cutting-edge technology, the SP 01 delivers
+					precise sound reproduction and enhanced audio performance.
+					Enjoy seamless connectivity and innovative features designed
+					for the modern audiophile.
+				</p>
+				<h2 className="text-lg font-semibold mb-2">Elegant Design</h2>
+				<p className="text-base mb-4">
+					The SP 01 boasts a sophisticated design that blends style
+					with functionality. Its sleek lines and premium finishes
+					make it a statement piece that complements any look, while
+					providing exceptional performance.
+				</p>
+			</div>
 		</div>
 	);
 }

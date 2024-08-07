@@ -9,7 +9,8 @@
 	--color-secondary: #8f8f8e;
 }
 
-body {
+body,
+html {
 	overflow: hidden;
 }
 
@@ -21,10 +22,4 @@ body {
 	p {
 		@apply font-antonio;
 	}
-}
-
-.scene-react-three {
-	position: relative;
-	width: 100vh;
-	height: 100vw;
 }

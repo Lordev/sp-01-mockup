@@ -8,8 +8,8 @@ export default function Home() {
 	return (
 		<main className="min-h-screen w-full relative ">
 			<Background>
-				<Logo className="text-white absolute left-5 top-5" />
 				<Scene />
+				<Logo className="text-white absolute left-3 top-3 md:left-5 md:top-5 max-md:w-14" />
 				<Overlay />
 			</Background>
 		</main>
